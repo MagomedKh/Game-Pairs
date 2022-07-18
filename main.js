@@ -1,22 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    console.log('dasfs')
     const cardsArrSh = []
     const completedLevelsArrLS = []
 
-    const select = document.querySelector('#levelSelect')
+    let select = document.querySelector('#levelSelect')
 
     let cardsNum
 
     let gameTime
 
+    //LocalStorage
+    let isSelectedLevel
+    let levelsCount
 
     function createGame() {
 
         for (let i = 0; i < localStorage.length; i++) {
 
-            const completedLevelsArr = JSON.parse(localStorage.getItem('Completed levels'))
-
-            completedLevelsArr.forEach((completedSelectIndex) => {
+            const completedColl = [JSON.parse(localStorage.getItem('Completed levels'))]
+            // const completedLevelsArr = completedColl.slice()
+            completedColl[0].forEach((completedSelectIndex) => {
                 select[completedSelectIndex].classList.add('completedLevel')
             })
         }
@@ -128,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             gameTime = select.value
+
+            isSelectedLevel = true
 
             startGame()
         })
@@ -281,6 +286,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, time * 800);
     }
 
+    function localStorageFN() {
+        completedLevelsArrLS.push(select.selectedIndex)
+
+        if (localStorage.length === 0) {
+            localStorage.setItem('Completed levels', JSON.stringify(completedLevelsArrLS))
+        }
+        else {
+            const arr = [JSON.parse(localStorage.getItem('Completed levels'))]
+            arr.push(select.selectedIndex)
+            localStorage.setItem('Completed levels', JSON.stringify(arr))
+        }
+    }
 
     function gameComplete() {
         const finishText = document.querySelector('.finishText')
@@ -294,8 +311,26 @@ document.addEventListener('DOMContentLoaded', () => {
         replay.classList.add('replayDown')
         replay.textContent = 'Play again'
 
-        completedLevelsArrLS.push(select.selectedIndex)
-        localStorage.setItem('Completed levels', JSON.stringify(completedLevelsArrLS))
+
+
+        if (isSelectedLevel) {
+            // levelsCount = [JSON.parse(localStorage.getItem('levelsCount'))]
+
+            if (localStorage.length === 0) {
+
+                localStorage.setItem('Completed levels', JSON.stringify(completedLevelsArrLS))
+
+                // localStorage.setItem('levelsCount', JSON.stringify(select.selectedIndex))
+            }
+            else if (!completedLevelsArrLS.includes(select.selectedIndex)) {
+                const arr = JSON.parse(localStorage.getItem('Completed levels'))
+                arr.push(select.selectedIndex)
+                localStorage.setItem('Completed levels', JSON.stringify(arr))
+
+                // levelsCount.push(select.selectedIndex)
+            }
+            completedLevelsArrLS.push(select.selectedIndex)
+        }
 
         timer.remove()
 
