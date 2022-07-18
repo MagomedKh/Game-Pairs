@@ -7,11 +7,11 @@
 }
 
 .body {
-    background-color: #bee77b;
+    background-color: #eeff00;
 }
 
 .bodyFinish {
-    background-color: rgb(52, 207, 52);
+    background-color: rgb(0, 196, 16);
 }
 
 .bodyLose {
@@ -19,17 +19,18 @@
 }
 
 .container {
-    width: 550px;
+    width: 650px;
     height: 550px;
     margin: 0 auto;
     margin-top: 95px;
-
-    /* background-color: violet; */
+    max-height: 650px;
+    /* background-color: rgb(218, 198, 218); */
 }
 
-.main {
-    width: 100%;
-    height: 100%;
+.game {
+    width: inherit;
+    height: inherit;
+    text-align: center;
 }
 
 .cardsBlock {
@@ -37,6 +38,8 @@
     flex-direction: column;
     justify-content: space-between;
     height: inherit;
+    border-radius: 16px;
+    /* box-shadow: inset 41px 41px 325px rgb(224, 207, 207), inset -41px -41px 325px rgb(224, 207, 207), 6px 6px 180px rgb(224, 207, 207), -6px -6px 180px rgb(224, 207, 207); */
     /*background-color: blue;*/
 }
 
@@ -44,18 +47,18 @@
     display: flex;
     justify-content: space-between;
     height: 23%;
+    min-height: 10%;
 }
 
 .cardsRow>div {
     width: 23%;
     border: 5px solid black;
     border-radius: 16px;
-
 }
 
 .cardsRow>div:hover {
     cursor: pointer;
-    box-shadow: 4px 4px 17px rgb(224, 207, 207), -4px -4px 17px rgb(224, 207, 207);
+    box-shadow: 4px 4px 20px rgb(224, 207, 207), -4px -4px 20px rgb(224, 207, 207);
 }
 
 .cardsRow>div:active {
@@ -71,7 +74,8 @@
 /*  */
 
 .closed {
-    background-image: url(images/red_reverse.png);
+    /* background-image: url(images/wild_color_changer.png); */
+    background-color: lightblue;
     background-size: 125px 125px;
 }
 
@@ -88,18 +92,11 @@
     border-radius: 15px;
 }
 
-
-.finish {
-    text-align: center;
-}
-
 .finishText {
-    font-size: 50px;
-    box-shadow: 10px 10px 50px rgb(224, 207, 207), -10px -10px 50px rgb(224, 207, 207);
-    /* font-weight: 600; */
+    font-size: 60px;
+    border-radius: 30px;
+    box-shadow: 10px 10px 200px rgb(224, 207, 207), -10px -10px 200px rgb(224, 207, 207);
 }
-
-/* .gameOver {} */
 
 .replay {
     display: inline-block;
@@ -138,6 +135,86 @@ a {
 
 }
 
+.timerDang {
+    color: red;
+    border-color: red;
+    transform: scale(1.3);
+    transition-duration: 300ms;
+}
+
+.bodyDang {
+    background-color: #faaeae;
+}
+
+
+.levels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 50%;
+    /* width: 330px;
+    height: 30px; */
+}
+
+.selfSettings {
+    width: 50%;
+    height: 100%;
+    padding: 25px;
+    border-right: 5px solid rgb(87, 87, 253);
+}
+
+.levels {
+    display: flex;
+    padding: 25px;
+}
+
+#levelSelect {
+    /* background-color: rgb(255, 255, 190); */
+    background-color: rgb(163, 149, 245);
+    /* border: none; */
+}
+
+
+.userSettings {
+    display: flex;
+    justify-content: space-between;
+    height: 350px;
+    width: 650px;
+    border-radius: 18px;
+    background-color: rgb(133, 172, 255);
+}
+
+.settingsTitle {
+    text-align: center;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.settingsForm {
+    display: flex;
+    height: 85%;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 .displayNone {
     display: none;
+}
+
+.jcSpEvl {
+    justify-content: space-evenly;
+}
+
+.invalidMessage {
+    color: rgb(192, 0, 0);
+}
+
+.settingsForm input {
+    margin-top: 8px;
+}
+
+.completedLevel {
+    background-color: green;
 }

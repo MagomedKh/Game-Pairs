@@ -13,39 +13,56 @@
 
 <body class="body">
    <div class="container">
-      <div class="cardsBlock">
-         <div class="cardsRow">
-            <div class="card1"></div>
-            <div class="card2"></div>
-            <div class="card3"></div>
-            <div class="card4"></div>
+      <div class="userSettings">
+         <div class="selfSettings">
+            <p class="settingsTitle">Configure game yourself</p>
+            <div class="settingsForm">
+               <div class="rows">
+                  <label for="rowsNum">Enter the number of rows:</label>
+                  <input type="text" name="" id="rowsNum" placeholder="2  —  8">
+               </div>
+
+               <div class="cardsInRow">
+                  <label for="cardsInRowNum">Enter the number of cards in the row:</label>
+                  <input type="text" name="" id="cardsInRowNum" placeholder="2  —  8">
+               </div>
+
+               <div class="time">
+                  <label for="time">Enter the game time:</label>
+                  <input type="text" name="" id="time" placeholder="Seconds">
+               </div>
+
+               <div class="invalidMessage"></div>
+
+               <button class="selfBtn">Start game!</button>
+            </div>
          </div>
-         <div class="cardsRow">
-            <div class="card5"></div>
-            <div class="card6"></div>
-            <div class="card7"></div>
-            <div class="card8"></div>
-         </div>
-         <div class="cardsRow">
-            <div class="card9"></div>
-            <div class="card10"></div>
-            <div class="card11"></div>
-            <div class="card12"></div>
-         </div>
-         <div class="cardsRow">
-            <div class="card13"></div>
-            <div class="card14"></div>
-            <div class="card15"></div>
-            <div class="card16"></div>
+
+         <div class="levels">
+            <p class="settingsTitle">Select a level</p>
+            <select id="levelSelect">
+               <option value="18">Easy level</option>
+               <option value="30" selected>Medium level</option>
+               <option value="95">Hard level</option>
+               <option value="110">Max level</option>
+            </select>
+            <button class="levelsBtn">Start game!</button>
          </div>
       </div>
-      <div class="finish">
-         <p class="finishText displayNone">Game is completed!</p>
-         <a href="index.html">
-            <div class="replay">Start again</div>
-         </a>
-         <div class="timer"></div>
-      </div>
+
+      <main class="game displayNone">
+         <div class="cardsBlock">
+
+         </div>
+         <div class="finish">
+            <p class="finishText displayNone">Game is completed!</p>
+            <a href="index.html">
+               <div class="replay">Start again</div>
+            </a>
+
+            <div class="timer"></div>
+         </div>
+      </main>
    </div>
 </body>
 
