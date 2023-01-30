@@ -1,2 +1,2 @@
 # Vanilla js game  -  Card-Pairs
-# magomedKh.github.io/game-pairs
+# https://magomedKh.github.io/game-pairs
