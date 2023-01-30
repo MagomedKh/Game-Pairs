@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('dasfs')
     const cardsArrSh = []
     const completedLevelsArrLS = []
 
     let select = document.querySelector('#levelSelect')
-
     let cardsNum
-
     let gameTime
 
     //LocalStorage
@@ -76,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         const levelsBtn = document.querySelector('.levelsBtn')
-        const selfBtn = document.querySelector('.selfBtn')
+        const settingsForm = document.querySelector('.settingsForm')
 
-        selfBtn.addEventListener('click', () => {
-
+        settingsForm.addEventListener('submit', () => {
+            event.preventDefault()
             const inpRowsNum = +document.querySelector('#rowsNum').value
             const inpCardsInRowNum = +document.querySelector('#cardsInRowNum').value
             const inpTime = +document.querySelector('#time').value
@@ -88,10 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // check invalid self settings (inputs)
             const invalidMessage = document.querySelector('.invalidMessage')
 
-            if ((inpRowsNum < 2 || inpRowsNum > 8 || isNaN(inpRowsNum)) || (inpCardsInRowNum < 2 || inpCardsInRowNum > 8 || isNaN(inpCardsInRowNum)) || (inpTime < 4 || inpTime > 1200 || isNaN(inpTime))) {
-                return invalidMessage.textContent = 'The data you entered is invalid'
-            }
-            else if (inpRowsNum * inpCardsInRowNum % 2 !== 0) {
+            if (inpRowsNum * inpCardsInRowNum % 2 !== 0) {
                 return invalidMessage.textContent = 'There should be an even number of cards'
             }
 
@@ -144,8 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver
 
     function startGame() {
-        const userSettings = document.querySelector('.userSettings')
-        userSettings.classList.add('displayNone')
+        const settings = document.querySelector('.settings')
+        settings.classList.add('displayNone')
 
         const game = document.querySelector('.game')
         game.classList.toggle('displayNone')
@@ -164,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const allCards = Array.prototype.slice.call(document.querySelectorAll('.cardsRow>div'))
         const winPairsArr = [];
 
-        //      Shuffle
+        //    Arr shuffle
         (() => {
             for (let i = cardsArrSh.length - 1; i > 0; i--) {
                 let tmp = cardsArrSh[i];
@@ -175,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })()
 
-
+        //  Open/Closed card
         const setCardValue = {
             opened(n) {
                 allCards[n].innerHTML = cardsArrSh[n]
@@ -201,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeAll()
 
 
+        // first statiс timer view 
         const timer = document.querySelector('.timer')
         timer.textContent = 'Remaining time: ' + gameTime
 
@@ -260,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // first timer view after view cardsBlock
     const timer = document.querySelector('.timer')
 
 
@@ -284,19 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
             timer.classList.add('timerDang')
             document.body.classList.add('bodyDang')
         }, time * 800);
-    }
-
-    function localStorageFN() {
-        completedLevelsArrLS.push(select.selectedIndex)
-
-        if (localStorage.length === 0) {
-            localStorage.setItem('Completed levels', JSON.stringify(completedLevelsArrLS))
-        }
-        else {
-            const arr = [JSON.parse(localStorage.getItem('Completed levels'))]
-            arr.push(select.selectedIndex)
-            localStorage.setItem('Completed levels', JSON.stringify(arr))
-        }
     }
 
     function gameComplete() {

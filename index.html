@@ -13,31 +13,32 @@
 
 <body class="body">
    <div class="container">
-      <div class="userSettings">
+      <div class="settings">
+
          <div class="selfSettings">
             <p class="settingsTitle">Configure game yourself</p>
-            <div class="settingsForm">
+            <form class="settingsForm" autocomplete="off">
                <div class="rows">
-                  <label for="rowsNum">Enter the number of rows:</label>
-                  <input type="text" name="" id="rowsNum" placeholder="2  —  8">
+                  <label style="display: block;" for="rowsNum">Enter the number of rows:</label>
+                  <input required type="number" min="2" max="8" id="rowsNum" value="4">
                </div>
 
                <div class="cardsInRow">
-                  <label for="cardsInRowNum">Enter the number of cards in the row:</label>
-                  <input type="text" name="" id="cardsInRowNum" placeholder="2  —  8">
+                  <label style="display: block;" for="cardsInRowNum">Enter the number of cards in the row:</label>
+                  <input required type="number" min="2" max="8" id="cardsInRowNum" value="4">
                </div>
 
                <div class="time">
-                  <label for="time">Enter the game time:</label>
-                  <input type="text" name="" id="time" placeholder="Seconds">
+                  <label style="display: block;" for="time">Enter the game time:</label>
+                  <input required type="number" min="5" max="1000" id="time" placeholder="Seconds">
                </div>
 
                <div class="invalidMessage"></div>
 
-               <button class="selfBtn">Start game!</button>
-            </div>
+               <button style="padding: 13px" class="selfBtn" type="submit">Start game!</button>
+            </form>
          </div>
-
+         <span style="position: absolute; top: 10%; left: 47.6%; font-size: 60px;">OR</span>
          <div class="levels">
             <p class="settingsTitle">Select a level</p>
             <select id="levelSelect">
@@ -46,7 +47,7 @@
                <option value="95">Hard level</option>
                <option value="110">Max level</option>
             </select>
-            <button class="levelsBtn">Start game!</button>
+            <button style="padding: 13px" class="levelsBtn">Start game!</button>
          </div>
       </div>
 
